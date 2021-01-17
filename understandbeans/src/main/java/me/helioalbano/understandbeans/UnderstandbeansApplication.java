@@ -12,13 +12,19 @@ import me.helioalbano.understandbeans.services.ClientService;
 @SpringBootApplication
 public class UnderstandbeansApplication {
 
-	@Autowired
-	@Qualifier("clientService1")
+//	@Autowired
+//	@Qualifier("clientService1")
 	private ClientService service1;
-	
-	@Autowired
-	@Qualifier("clientService2")
+//	
+//	@Autowired
+//	@Qualifier("clientService2")
 	private ClientService service2;
+	
+	public UnderstandbeansApplication(@Qualifier("clientService1") ClientService service1, 
+			@Qualifier("clientService2") ClientService service2) {
+		this.service1 = service1;
+		this.service2 = service2;
+	}
 	
 	public static void main(String[] args) {
 		SpringApplication.run(UnderstandbeansApplication.class, args);
